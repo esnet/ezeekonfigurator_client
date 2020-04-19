@@ -13,4 +13,4 @@ brokerd/test.py
 
 deactivate
 
-brokerd/build.py "$1" "$3"
+BROKERD_PORT=$1 URL=$3 brokerd/build.py
