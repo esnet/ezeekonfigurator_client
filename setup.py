@@ -11,6 +11,8 @@ with open('brokerd/requirements.txt') as f:
         else:
             requirements.append(line)
 
+print(requirements)
+
 setuptools.setup(
     name="eZeeKonfigurator",
     version="0.1",
