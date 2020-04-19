@@ -1,5 +1,7 @@
 [package]
-build_command = /bin/bash ./build.sh %(URL)s "$(zkg config script_dir)"
+test_command = %(PYTHON)s brokerd/test.py
+build_command = /bin/bash ./build.sh "%(URL)s" "%(PYTHON)s" "$(zkg config script_dir)"
 script_dir = scripts
 user_vars =
    URL [http://localhost:8000] "eZeeKonfigurator URL"
+   PYTHON [/usr/bin/env python3] "Path to Python. Note: Python3 is required."
