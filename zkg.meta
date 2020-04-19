@@ -1,5 +1,4 @@
 [package]
-test_command = %(PYTHON)s brokerd/test.py
 build_command = /bin/bash ./build.sh "%(URL)s" "%(PYTHON)s" "$(zkg config script_dir)"
 script_dir = scripts
 user_vars =
