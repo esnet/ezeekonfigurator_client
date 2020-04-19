@@ -11,6 +11,6 @@ chmod +x brokerd/build.py brokerd/run_brokerd.py brokerd/test.py
 
 brokerd/test.py
 
-deactivate
-
 BROKERD_PORT=$1 URL=$3 brokerd/build.py
+
+
