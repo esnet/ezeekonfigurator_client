@@ -20,9 +20,9 @@ export {
 
 function start_brokerd()
 {
-    set_env("BROKERD_BIND_PORT", cat(port_to_count(brokerd_port)));
-    set_env("UUID", uuid);
-    set_env("URL", url);
+    setenv("BROKERD_BIND_PORT", cat(port_to_count(brokerd_port)));
+    setenv("UUID", uuid);
+    setenv("URL", url);
     system(fmt("%s/%s %s/%s", @DIR, "venv/bin/python", @DIR, "venv/bin/run_brokerd.py"));
 }
 
