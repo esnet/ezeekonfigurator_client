@@ -5,16 +5,16 @@ module eZeeKonfigurator;
 export {
 
     ## The brokerd port we connect to
-    redef brokerd_port: port = 45570/tcp;
+    const brokerd_port: port = 45570/tcp &redef;
 
     ## The brokerd port we connect to
-    redef brokerd_address: addr = 127.0.0.1;
+    const brokerd_address: addr = 127.0.0.1 &redef;
 
     ## Our unique identifier
-    redef uuid: string = "";
+    const uuid: string = "" &redef;
 
     ## URL of our eZeeKonfigurator webserver
-    redef url: string = "";
+    const url: string = "http://localhost:8000/" &redef;
 
 }
 
