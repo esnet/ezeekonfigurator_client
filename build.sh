@@ -1,6 +1,6 @@
 #!/bin/bash
 
-"$2" -m venv scripts/venv
+$2 -m venv scripts/venv
 source scripts/venv/bin/activate
 pip install --upgrade pip
 pip install .
