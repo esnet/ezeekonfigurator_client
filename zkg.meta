@@ -1,5 +1,5 @@
 [package]
-build_command = /bin/bash ./build.sh "%(BROKERD_BIND_PORT)" "%(URL)s" "%(PYTHON)s"
+build_command = /bin/bash ./build.sh "%(BROKERD_BIND_PORT)s" "%(URL)s" "%(PYTHON)s"
 script_dir = scripts
 user_vars =
    URL [http://localhost:8000] "eZeeKonfigurator URL"
