@@ -2,9 +2,9 @@
 
 set -e
 
-BIND_PORT=$2
-URL=$3
-PYTHON=$4
+BIND_PORT=$1
+URL=$2
+PYTHON=$3
 
 $PYTHON -m venv scripts/venv
 source scripts/venv/bin/activate
