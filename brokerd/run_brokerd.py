@@ -34,6 +34,8 @@ uuid = os.environ.get("UUID", "00112233-4455-6677-8899-aabbccddeeff")
 
 
 def dump_to_file(name, data):
+    os.mkdirs("errors", exist_ok=True)
+    
     filename = os.path.join("errors", "%s.json" % name)
     try:
         json_data = json.dumps(data)
