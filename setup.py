@@ -1,7 +1,15 @@
 import setuptools
 
 with open('brokerd/requirements.txt') as f:
-    requirements = f.read().splitlines()
+    requirements = []
+
+    for line in f.readlines():
+        line.strip()
+        if line.startswith("git+"):
+            egg = line.split('#egg=', 1)[1]
+            requirements.append(f"{egg} @ {line}")
+        else:
+            requirements.append(line)
 
 setuptools.setup(
     name="eZeeKonfigurator",
