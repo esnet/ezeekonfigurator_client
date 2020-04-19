@@ -15,5 +15,5 @@ with open("scripts/communication.zeek.j2", 'r') as f:
     template = Template(f.read())
 
 with open("scripts/communication.zeek", 'w') as f:
-    f.write(template.render(**data)
+    f.write(template.render(**data))
 
