@@ -12,5 +12,5 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     include_package_data=True,
     install_requires=requirements,
-    scripts=['brokerd.py'],
+    scripts=['brokerd/run_server.py'],
 )
