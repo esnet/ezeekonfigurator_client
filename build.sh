@@ -10,5 +10,3 @@ chmod +x brokerd/build.py brokerd/run_brokerd.py
 deactivate
 
 brokerd/build.py "$1" "$2"
-
-zeek scripts/install
