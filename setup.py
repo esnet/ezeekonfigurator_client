@@ -4,14 +4,12 @@ with open('brokerd/requirements.txt') as f:
     requirements = []
 
     for line in f.readlines():
-        line.strip()
+        line = line.strip()
         if line.startswith("git+"):
             egg = line.split('#egg=', 1)[1]
             requirements.append(f"{egg} @ {line}")
         else:
             requirements.append(line)
-
-print(requirements)
 
 setuptools.setup(
     name="eZeeKonfigurator",
