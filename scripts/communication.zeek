@@ -31,7 +31,7 @@ function start_brokerd()
 event zeek_init()
 {
     start_brokerd();
-    Broker::peer(brokerd_address, brokerd_port);
+    Broker::peer(cat(brokerd_address), brokerd_port);
 }
 
 event Broker::peer_added(endpoint: Broker::EndpointInfo, msg: string) &priority=10
@@ -41,11 +41,11 @@ event Broker::peer_added(endpoint: Broker::EndpointInfo, msg: string) &priority=
         local topic = cat("/ezeekonfigurator/control/", uuid);
 
         Broker::subscribe(topic);
-        Broker::auto_publish(new_topic, heartbeat);
-        Broker::auto_publish(new_topic, last_gasp);
-        Broker::auto_publish(new_topic, option_change_reply);
-        Broker::auto_publish(new_topic, sensor_info_reply);
-        Broker::auto_publish(new_topic, option_list_reply);
+        Broker::auto_publish(topic, heartbeat);
+        Broker::auto_publish(topic, last_gasp);
+        Broker::auto_publish(topic, option_change_reply);
+        Broker::auto_publish(topic, sensor_info_reply);
+        Broker::auto_publish(topic, option_list_reply);
             
         event eZeeKonfigurator::heartbeat(getpid());
         event eZeeKonfigurator::sensor_info_reply(SensorInfoMessage());
