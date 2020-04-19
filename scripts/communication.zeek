@@ -25,7 +25,7 @@ function start_brokerd()
                                            ["URL"] = url,
                                          };
     
-    system_env("./venv/bin/run_brokerd.py", env);
+    system_env("@DIR/venv/bin/run_brokerd.py", env);
 }
 
 event zeek_init()
