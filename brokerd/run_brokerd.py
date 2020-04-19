@@ -38,7 +38,7 @@ uuid = os.environ.get("UUID", "00112233-4455-6677-8899-aabbccddeeff")
 def dump_to_file(name, data):
     os.makedirs("brokerd_errors", exist_ok=True)
     
-    filename = os.path.join("broked_errors", "%s.json" % name)
+    filename = os.path.join("brokerd_errors", "%s.json" % name)
     try:
         json_data = json.dumps(data)
     except TypeError as e:
