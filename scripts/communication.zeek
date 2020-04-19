@@ -20,12 +20,10 @@ export {
 
 function start_brokerd()
 {
-    local env: table[string] of string = { ["BROKERD_BIND_PORT"] = cat(port_to_count(brokerd_port)),
-                                           ["UUID"] = uuid,
-                                           ["URL"] = url,
-                                         };
-    
-    system_env(fmt("%s/%s", @DIR, "venv/bin/run_brokerd.py"), env);
+    set_env("BROKERD_BIND_PORT", cat(port_to_count(brokerd_port)));
+    set_env("UUID", uuid);
+    set_env("URL", url);
+    system(fmt("%s/%s %s/%s", @DIR, "venv/bin/python", @DIR, "venv/bin/run_brokerd.py"));
 }
 
 event zeek_init()
