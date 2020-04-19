@@ -1,3 +1,5 @@
+{# NOTE: This file is rendered to communication.zeek during "zkg install" -#}
+{# -#}
 module eZeeKonfigurator;
 
 @load ./options
@@ -5,16 +7,16 @@ module eZeeKonfigurator;
 export {
 
     ## The brokerd port we connect to
-    const brokerd_port: port = {{ data.brokerd_port }}/tcp &redef;
+    const brokerd_port: port = {{ brokerd_port }}/tcp &redef;
 
     ## The brokerd port we connect to
-    const brokerd_address: addr = {{ data.brokerd_address }} &redef;
+    const brokerd_address: addr = {{ brokerd_address }} &redef;
 
     ## Our unique identifier
-    const uuid: string = "{{ data.uuid }}" &redef;
+    const uuid: string = "{{ uuid }}" &redef;
 
     ## URL of our eZeeKonfigurator webserver
-    const url: string = "{{ data.url }}" &redef;
+    const url: string = "{{ url }}" &redef;
 
 }
 
