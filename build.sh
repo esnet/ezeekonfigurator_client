@@ -1,7 +1,7 @@
 #!/bin/bash
 
-/usr/bin/env python3 -m venv brokerd/venv
-source brokerd/venv/bin/activate
+/usr/bin/env python3 -m venv scripts/venv
+source scripts/venv/bin/activate
 pip install --upgrade pip
 pip install ./brokerd
 
