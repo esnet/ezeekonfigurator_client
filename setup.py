@@ -1,4 +1,10 @@
-import setuptools
+import sys
+from distutils.version import StrictVersion
+from setuptools import setup, __version__
+
+if StrictVersion(__version__) < StrictVersion('20.2'):
+    print('your setuptools version does not support PEP 508. Upgrade setuptools and repeat the installation.')
+    sys.exit(1)
 
 with open('brokerd/requirements.txt') as f:
     requirements = []
@@ -11,7 +17,7 @@ with open('brokerd/requirements.txt') as f:
         else:
             requirements.append(line)
 
-setuptools.setup(
+setup(
     name="eZeeKonfigurator",
     version="0.1",
     author="Vlad Grigorescu",
