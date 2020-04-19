@@ -14,11 +14,13 @@ from broker_json import from_json, to_json
 import broker
 
 debug = True
-
-logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 if debug:
-    logging.basicConfig(level=os.environ.get("LOGLEVEL", "DEBUG"))
+    default_loglevel = "DEBUG"
+else:
+    default_loglevel = "INFO"
 
+loglevel = os.environ.get("LOGLEVEL", default_loglevel)
+logging.basicConfig(filename="run_brokerd.log", level=loglevel)
 log = logging.getLogger(__name__)
 
 batch_size = 0
@@ -34,9 +36,9 @@ uuid = os.environ.get("UUID", "00112233-4455-6677-8899-aabbccddeeff")
 
 
 def dump_to_file(name, data):
-    os.mkdirs("errors", exist_ok=True)
+    os.makedirs("brokerd_errors", exist_ok=True)
     
-    filename = os.path.join("errors", "%s.json" % name)
+    filename = os.path.join("broked_errors", "%s.json" % name)
     try:
         json_data = json.dumps(data)
     except TypeError as e:
