@@ -14,11 +14,13 @@ from broker_json import from_json, to_json
 import broker
 
 debug = True
-
-logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 if debug:
-    logging.basicConfig(level=os.environ.get("LOGLEVEL", "DEBUG"))
+    default_loglevel = "DEBUG"
+else:
+    default_loglevel = "INFO"
 
+loglevel = os.environ.get("LOGLEVEL", default_loglevel)
+logging.basicConfig(filename="run_brokerd.log", level=loglevel)
 log = logging.getLogger(__name__)
 
 batch_size = 0
@@ -33,7 +35,9 @@ asgi_url = os.environ.get("ASGI_URL", ez_url + "events/")
 
 
 def dump_to_file(name, data):
-    filename = os.path.join("errors", "%s.json" % name)
+    os.makedirs("brokerd_errors", exist_ok=True)
+    
+    filename = os.path.join("brokerd_errors", "%s.json" % name)
     try:
         json_data = json.dumps(data)
     except TypeError as e:
