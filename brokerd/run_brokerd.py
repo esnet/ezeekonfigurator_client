@@ -30,7 +30,6 @@ bind_address = os.environ.get("BROKERD_BIND_ADDR", "")
 bind_port = os.environ.get("BROKERD_BIND_PORT", None)
 ez_url = os.environ.get("URL", "http://localhost:8000/")
 asgi_url = os.environ.get("ASGI_URL", ez_url + "events/")
-uuid = os.environ.get("UUID", "00112233-4455-6677-8899-aabbccddeeff")
 
 
 def dump_to_file(name, data):
@@ -45,7 +44,7 @@ def dump_to_file(name, data):
 
 
 def send_to_server(path, data):
-    url = ez_url + "brokerd_api/%s/v%s/%s/" % (uuid, client_version, path)
+    url = ez_url + "brokerd_api/v%s/%s/" % (client_version, path)
     log.debug("Sending %s", data)
     try:
         r = requests.post(url, json=data)
