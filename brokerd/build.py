@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import pathlib
 import uuid
 
 from jinja2 import Template
@@ -14,7 +15,9 @@ data = {
 
 
 def render(filename):
-    with open("scripts/communication.zeek.j2", 'r') as f:
+    path = pathlib.Path(__file__).parent.absolute()
+    template_path = pathlib.PurePath(path, 'scripts', 'communication.zeek.j2')
+    with open(str(template_path), 'r') as f:
         template = Template(f.read())
 
     with open(filename, 'w') as f:
