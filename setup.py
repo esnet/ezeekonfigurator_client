@@ -27,5 +27,5 @@ setup(
     include_package_data=True,
     install_requires=requirements,
     scripts=['brokerd/run_brokerd.py'],
-    data_files=[('zeek_scripts', ['scripts/*'])]
+    data_files=[('zeek_scripts', ['scripts/__load__.zeek', 'scripts/options.zeek'])]
 )
