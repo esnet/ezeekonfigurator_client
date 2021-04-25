@@ -15,7 +15,7 @@ data = {
 
 
 def render(filename):
-    path = pathlib.Path(__file__).parent.absolute()
+    path = pathlib.Path(__file__).parent.parent.absolute()
     template_path = pathlib.PurePath(path, 'scripts', 'communication.zeek.j2')
     with open(str(template_path), 'r') as f:
         template = Template(f.read())
