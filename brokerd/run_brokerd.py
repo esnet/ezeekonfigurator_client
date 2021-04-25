@@ -83,8 +83,6 @@ def setup():
 
 
 async def broker_loop():
-    send_to_server("brokerd_info", {'ip': bind_address, 'port': port})
-
     while True:
         result = subscriber.get(1, 1)
         if not result:
