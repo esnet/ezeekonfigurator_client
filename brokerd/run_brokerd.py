@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 
-import aiohttp
-from aiohttp_sse_client import client as sse_client
 import asyncio
 import datetime
 import hashlib
 import json
 import logging
 import os
-import requests
 
-from broker_json import from_json, to_json
+import aiohttp
 import broker
+import requests
+from aiohttp_sse_client import client as sse_client
+from broker_json import from_json, to_json
 
 debug = True
 if debug:
@@ -33,10 +33,12 @@ bind_port = os.environ.get("BROKERD_BIND_PORT", None)
 ez_url = os.environ.get("URL", "http://localhost:8000/")
 asgi_url = os.environ.get("ASGI_URL", ez_url + "events/")
 
+endpoint = subscriber = None
+
 
 def dump_to_file(name, data):
     os.makedirs("brokerd_errors", exist_ok=True)
-    
+
     filename = os.path.join("brokerd_errors", "%s.json" % name)
     try:
         json_data = json.dumps(data)
@@ -82,6 +84,7 @@ def setup():
     log.info("Broker server started on TCP %d", port)
 
 
+# noinspection PyUnresolvedReferences
 async def broker_loop():
     while True:
         result = subscriber.get(1, 1)
@@ -128,6 +131,7 @@ async def broker_loop():
             log.info("Received unhandled event: %s", ev.name())
 
 
+# noinspection PyUnresolvedReferences
 async def server_loop():
     while True:
         async with sse_client.EventSource(asgi_url) as event_source:
