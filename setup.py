@@ -18,7 +18,7 @@ with open('brokerd/requirements.txt') as f:
             requirements.append(line)
 
 setup(
-    name="eZeeKonfigurator",
+    name="ezeekonfigurator_client",
     version="0.1",
     author="Vlad Grigorescu",
     author_email="vlad@es.net",
