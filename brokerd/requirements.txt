@@ -1,4 +1,4 @@
-aiohttp-sse-client==0.1.6
-git+https://gitlab.es.net/security/broker-to-json.git@master#egg=broker_json
+aiohttp-sse-client==0.2.1
+git+https://github.com/grigorescu/broker-to-json.git@main#egg=broker_json
 Jinja2
 requests
